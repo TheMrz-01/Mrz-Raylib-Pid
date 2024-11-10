@@ -52,7 +52,7 @@ ButtonText targetButtonText = { 0 };
 ButtonText moveButtonText = { 0 };
 ButtonText stopButtonText = { 0 };
 
-bool goForArm = 0;
+bool goForArm = false;
 
 void controlArmPos(Arm* arm){
     if((arm->rotation > 180)){
@@ -102,19 +102,17 @@ void setTargetPoint(Arm* refArm,Arm* arm,Button* button,ButtonText* text){
 }
 
 int isArmOkey(Button* stopButton,ButtonText* stopText,Button* moveButton,ButtonText* moveText){
-    if(IsMouseButtonDown(0) && (440 > GetMousePosition().x) && (GetMousePosition().x > 400) && (270 > GetMousePosition().y) && (GetMousePosition().y > 250)){
-        moveButton->color = MRZ_PRESSED_WHITE;
-        moveText->color = MRZ_PRESSED_GRAY;
+    if(IsMouseButtonDown(0) && (635 > GetMousePosition().x) && (GetMousePosition().x > 580) && (370 > GetMousePosition().y) && (GetMousePosition().y > 350)){
         stopButton->color = MRZ_PRESSED_WHITE;
         stopText->color = MRZ_PRESSED_GRAY;
-        printf("move");
-    }
-    else if(IsMouseButtonDown(0) && (440 > GetMousePosition().x) && (GetMousePosition().x > 400) && (270 > GetMousePosition().y) && (GetMousePosition().y > 250)){
-        moveButton->color = MRZ_PRESSED_WHITE;
-        moveText->color = MRZ_PRESSED_GRAY;
-        stopButton->color = MRZ_PRESSED_WHITE;
-        stopText->color = MRZ_PRESSED_GRAY;
+        goForArm = false;
         printf("stop");
+    }
+    else if(IsMouseButtonDown(0) && (515 > GetMousePosition().x) && (GetMousePosition().x > 460) && (370 > GetMousePosition().y) && (GetMousePosition().y > 350)){
+        moveButton->color = MRZ_PRESSED_WHITE;
+        moveText->color = MRZ_PRESSED_GRAY;
+        goForArm = true;
+        printf("move");
     }
     else{
         moveButton->color = MRZ_WHITE;
@@ -125,6 +123,7 @@ int isArmOkey(Button* stopButton,ButtonText* stopText,Button* moveButton,ButtonT
 }
 
 int moveArm(){
+    
 
     return 1;
 }
@@ -140,6 +139,7 @@ int main(void)
     arm.color = MRZ_RED_ORANGE;
     arm.rect = (Rectangle){200,225,2*2,80*2};
     arm.origin = (Vector2){arm.rect.width / 2,0};
+    //PID Values
     arm.Kp = 10;
     arm.Ki = 0;
     arm.Kd = 0;
@@ -178,6 +178,26 @@ int main(void)
     targetButtonText.cords = (Vector2){targetButton.rect.x + 1,targetButton.rect.y};
     targetButtonText.color = MRZ_GRAY;
 
+    //Move button 
+    moveButton.rect = (Rectangle){460,350,55,20};
+    moveButton.color = MRZ_WHITE;
+
+    //Move button text
+    moveButtonText.text = "Move";
+    moveButtonText.fontSize = 20;
+    moveButtonText.cords = (Vector2){moveButton.rect.x + 1,moveButton.rect.y};
+    moveButtonText.color = MRZ_GRAY;
+
+    //Stop button
+    stopButton.rect = (Rectangle){580,350,55,20};
+    stopButton.color = MRZ_WHITE;
+
+    //Stop button text
+    stopButtonText.text = "Stop";
+    stopButtonText.fontSize = 20;
+    stopButtonText.cords = (Vector2){stopButton.rect.x + 4,stopButton.rect.y};
+    stopButtonText.color = MRZ_GRAY;
+
     while (!WindowShouldClose())
     {
         controlArmPos(&arm);
@@ -199,8 +219,13 @@ int main(void)
             DrawRectanglePro(startPointArm.rect,startPointArm.origin,startPointArm.rotation,startPointArm.color);
             DrawRectanglePro(targetPointArm.rect,targetPointArm.origin,targetPointArm.rotation,targetPointArm.color);
 
-            //Draw button to make it move
+            //Draw move button
+            DrawRectangleRec(moveButton.rect,moveButton.color);
+            DrawText(moveButtonText.text,moveButtonText.cords.x,moveButtonText.cords.y,moveButtonText.fontSize,moveButtonText.color);
 
+            //Draw stop button
+            DrawRectangleRec(stopButton.rect,stopButton.color);
+            DrawText(stopButtonText.text,stopButtonText.cords.x,stopButtonText.cords.y,stopButtonText.fontSize,stopButtonText.color);
 
             //Draw arm shit
             char charRot[50];  
