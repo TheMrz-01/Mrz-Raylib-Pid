@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <math.h>
 
-#define SCREENWIDTH 800
-#define SCREENHEIGHT 450
+#define SCREENWIDTH 1024
+#define SCREENHEIGHT 576
 
 #define MRZ_WHITE (Color){255, 255, 255, 255}
 #define MRZ_PRESSED_WHITE (Color){200, 200, 200, 255}
@@ -13,12 +13,18 @@
 #define MRZ_DEBUG_ORANGE (Color){252, 90, 3, 100}
 #define MRZ_DEBUG_YELLOW (Color){252, 165, 3, 100}
 
+#define GRAVITY 9.8f
+#define ARM_MASS 1.0f
+#define ARM_LENGTH 80.0f 
+
 typedef struct Arm{
     Vector2 origin;
     float speed;
     float rotation;
     Color color;
     Rectangle rect;
+    float velocity;
+    float acceleration;
     float Kp;
     float Ki;
     float Kd;
@@ -55,6 +61,8 @@ ButtonText stopButtonText = { 0 };
 bool goForArm = false;
 bool isAtStart = false;
 
+const float damping = 0.1;
+
 //PID stuff
 float previous_error = 0;
 float integral = 0;
@@ -67,18 +75,11 @@ void controlArmPos(Arm* arm){
     if(goForArm)
         return;
 
-    if((arm->rotation > 180)){
-        arm->rotation = 180;
-    }
-    else if(arm->rotation < 0){
-        arm->rotation = 0;
-    }
-
     // && (arm->rotation < 179.05)  && (arm->rotation > 0)
-    if (IsKeyDown(KEY_UP) && (arm->rotation < 179.05)){
+    if (IsKeyDown(KEY_UP)){
         arm->rotation += arm->speed * GetFrameTime();
     }
-    if (IsKeyDown(KEY_DOWN) && (arm->rotation > 0)){
+    if (IsKeyDown(KEY_DOWN)){
         arm->rotation -= arm->speed * GetFrameTime();
     }
 
@@ -114,16 +115,18 @@ int isArmOkey(Arm* arm,Arm* startArm,Arm* targetArm,Button* stopButton,ButtonTex
         stopButton->color = MRZ_PRESSED_WHITE;
         stopText->color = MRZ_PRESSED_GRAY;
         goForArm = false;
+        arm->acceleration = 0;
+        arm->velocity = 0;
     }
     else if(IsMouseButtonDown(0) && (515 > GetMousePosition().x) && (GetMousePosition().x > 460) && (370 > GetMousePosition().y) && (GetMousePosition().y > 350)){
         moveButton->color = MRZ_PRESSED_WHITE;
         moveText->color = MRZ_PRESSED_GRAY;
+        arm->rotation = startArm->rotation;
         goForArm = true;
         integral = 0;
         //previous_error = 0;
         //delete thi later
         previous_error = targetArm->rotation - arm->rotation;
-        arm->rotation = startArm->rotation;
     }
     else{
         moveButton->color = MRZ_WHITE;
@@ -133,6 +136,22 @@ int isArmOkey(Arm* arm,Arm* startArm,Arm* targetArm,Button* stopButton,ButtonTex
     }
 }
 
+void applyGravity(Arm* arm){
+    float angleInRadians = arm->rotation * (PI / 180.0f);
+    float gravityTorque = GRAVITY * ARM_MASS * ARM_LENGTH * sin(angleInRadians) / 2;
+
+    float gravitationalAcceleration = gravityTorque / (ARM_MASS * ARM_LENGTH * ARM_LENGTH / 3);
+    arm->acceleration += gravitationalAcceleration;
+}
+
+void applyPhysics(Arm* arm){
+    applyGravity(&arm);
+
+    arm->velocity += arm->acceleration * GetFrameTime();
+    arm->velocity -= arm->velocity * damping * GetFrameTime();
+    arm->rotation += arm->velocity * GetFrameTime();
+}
+
 void moveArm(Arm* arm,Arm* startArm,Arm* targetArm){
     error = targetArm->rotation - arm->rotation;
     proportional = error;
@@ -140,8 +159,11 @@ void moveArm(Arm* arm,Arm* startArm,Arm* targetArm){
     derivative = (error - previous_error) / GetFrameTime();
     output = arm->Kp * proportional + arm->Ki * integral  + arm->Kd * derivative;
     previous_error = error;
-    arm->rotation += output * GetFrameTime();
+    //arm->rotation += output * GetFrameTime(); This will stay like this for some time
     //WaitTime(GetFrameTime());
+
+    //Wait here lil ling ling
+    arm->acceleration = output;
 }
 
 int main(void)
@@ -155,10 +177,13 @@ int main(void)
     arm.color = MRZ_RED_ORANGE;
     arm.rect = (Rectangle){200,225,2*2,80*2};
     arm.origin = (Vector2){arm.rect.width / 2,0};
+    //Physics
+    arm.velocity = 0.0;
+    arm.acceleration = 0.0;
     //PID Values
     arm.Kp = 10.0;
-    arm.Ki = 0.0;
-    arm.Kd = 0.0;
+    arm.Ki = 0.1;
+    arm.Kd = 1.0;
     
     //Start Arm Thingy
     startPointArm.speed = 100.0;
@@ -224,6 +249,8 @@ int main(void)
         if(goForArm){
             moveArm(&arm,&startPointArm,&targetPointArm);
         }
+
+        applyPhysics(&arm);
 
         //Drawing shit goes here
         BeginDrawing();
