@@ -53,8 +53,20 @@ ButtonText moveButtonText = { 0 };
 ButtonText stopButtonText = { 0 };
 
 bool goForArm = false;
+bool isAtStart = false;
+
+//PID stuff
+float previous_error = 0;
+float integral = 0;
+float error = 0;
+float proportional = 0;
+float derivative = 0;
+float output = 0;
 
 void controlArmPos(Arm* arm){
+    if(goForArm)
+        return;
+
     if((arm->rotation > 180)){
         arm->rotation = 180;
     }
@@ -65,11 +77,9 @@ void controlArmPos(Arm* arm){
     // && (arm->rotation < 179.05)  && (arm->rotation > 0)
     if (IsKeyDown(KEY_UP) && (arm->rotation < 179.05)){
         arm->rotation += arm->speed * GetFrameTime();
-        printf("LEFT\n");
     }
     if (IsKeyDown(KEY_DOWN) && (arm->rotation > 0)){
         arm->rotation -= arm->speed * GetFrameTime();
-        printf("Right\n");
     }
 
     return;
@@ -80,7 +90,6 @@ void setStartingPoint(Arm* refArm,Arm* arm,Button* button,ButtonText* text){
         button->color = MRZ_PRESSED_WHITE;
         text->color = MRZ_PRESSED_GRAY;
         arm->rotation = refArm->rotation;
-        printf("Start");
     }
     else{
         button->color = MRZ_WHITE;
@@ -93,7 +102,6 @@ void setTargetPoint(Arm* refArm,Arm* arm,Button* button,ButtonText* text){
         button->color = MRZ_PRESSED_WHITE;
         text->color = MRZ_PRESSED_GRAY;
         arm->rotation = refArm->rotation;
-        printf("Target");
     }
     else{
         button->color = MRZ_WHITE;
@@ -101,18 +109,21 @@ void setTargetPoint(Arm* refArm,Arm* arm,Button* button,ButtonText* text){
     }
 }
 
-int isArmOkey(Button* stopButton,ButtonText* stopText,Button* moveButton,ButtonText* moveText){
+int isArmOkey(Arm* arm,Arm* startArm,Arm* targetArm,Button* stopButton,ButtonText* stopText,Button* moveButton,ButtonText* moveText){
     if(IsMouseButtonDown(0) && (635 > GetMousePosition().x) && (GetMousePosition().x > 580) && (370 > GetMousePosition().y) && (GetMousePosition().y > 350)){
         stopButton->color = MRZ_PRESSED_WHITE;
         stopText->color = MRZ_PRESSED_GRAY;
         goForArm = false;
-        printf("stop");
     }
     else if(IsMouseButtonDown(0) && (515 > GetMousePosition().x) && (GetMousePosition().x > 460) && (370 > GetMousePosition().y) && (GetMousePosition().y > 350)){
         moveButton->color = MRZ_PRESSED_WHITE;
         moveText->color = MRZ_PRESSED_GRAY;
         goForArm = true;
-        printf("move");
+        integral = 0;
+        //previous_error = 0;
+        //delete thi later
+        previous_error = targetArm->rotation - arm->rotation;
+        arm->rotation = startArm->rotation;
     }
     else{
         moveButton->color = MRZ_WHITE;
@@ -122,10 +133,15 @@ int isArmOkey(Button* stopButton,ButtonText* stopText,Button* moveButton,ButtonT
     }
 }
 
-int moveArm(){
-    
-
-    return 1;
+void moveArm(Arm* arm,Arm* startArm,Arm* targetArm){
+    error = targetArm->rotation - arm->rotation;
+    proportional = error;
+    integral += error * GetFrameTime();
+    derivative = (error - previous_error) / GetFrameTime();
+    output = arm->Kp * proportional + arm->Ki * integral  + arm->Kd * derivative;
+    previous_error = error;
+    arm->rotation += output * GetFrameTime();
+    //WaitTime(GetFrameTime());
 }
 
 int main(void)
@@ -140,20 +156,20 @@ int main(void)
     arm.rect = (Rectangle){200,225,2*2,80*2};
     arm.origin = (Vector2){arm.rect.width / 2,0};
     //PID Values
-    arm.Kp = 10;
-    arm.Ki = 0;
-    arm.Kd = 0;
+    arm.Kp = 10.0;
+    arm.Ki = 0.0;
+    arm.Kd = 0.0;
     
     //Start Arm Thingy
     startPointArm.speed = 100.0;
-    startPointArm.rotation = 180.0;
+    startPointArm.rotation = 0.0;
     startPointArm.color = MRZ_DEBUG_ORANGE;
     startPointArm.rect = (Rectangle){200,225,2*2,80*2};
     startPointArm.origin = (Vector2){startPointArm.rect.width / 2,0};
 
     //Target Arm Thingy
     targetPointArm.speed = 100.0;
-    targetPointArm.rotation = 0.0;
+    targetPointArm.rotation = 180.0;
     targetPointArm.color = MRZ_DEBUG_YELLOW;
     targetPointArm.rect = (Rectangle){200,225,2*2,80*2};
     targetPointArm.origin = (Vector2){targetPointArm.rect.width / 2,0};
@@ -203,10 +219,10 @@ int main(void)
         controlArmPos(&arm);
         setStartingPoint(&arm,&startPointArm,&startButton,&startButtonText);
         setTargetPoint(&arm,&targetPointArm,&targetButton,&targetButtonText);
-        isArmOkey(&stopButton,&stopButtonText,&moveButton,&moveButtonText);
+        isArmOkey(&arm,&startPointArm,&targetPointArm,&stopButton,&stopButtonText,&moveButton,&moveButtonText);
 
         if(goForArm){
-            moveArm();
+            moveArm(&arm,&startPointArm,&targetPointArm);
         }
 
         //Drawing shit goes here
