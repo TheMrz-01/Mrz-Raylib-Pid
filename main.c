@@ -86,6 +86,32 @@ void controlArmPos(Arm* arm){
     return;
 }
 
+void controlPIDValues(Arm* arm){
+    //P
+    if(IsKeyPressed(KEY_T)){
+        arm->Kp -= 1;
+    }
+    if(IsKeyPressed(KEY_Y)){
+        arm->Kp += 1;
+    }
+    //I
+    if(IsKeyPressed(KEY_G)){
+        arm->Ki -= 0.1;
+    }
+    if(IsKeyPressed(KEY_H)){
+        arm->Ki += 0.1;
+    }
+    //D
+    if(IsKeyPressed(KEY_B)){
+        arm->Kd -= 0.1;
+    }
+    if(IsKeyPressed(KEY_N)){
+        arm->Kd += 0.1;
+    }
+
+    return;
+}
+
 void setStartingPoint(Arm* refArm,Arm* arm,Button* button,ButtonText* text){
     if(IsMouseButtonDown(0) && (440 > GetMousePosition().x) && (GetMousePosition().x > 400) && (220 > GetMousePosition().y) && (GetMousePosition().y > 200)){
         button->color = MRZ_PRESSED_WHITE;
@@ -242,6 +268,7 @@ int main(void)
     while (!WindowShouldClose())
     {
         controlArmPos(&arm);
+        controlPIDValues(&arm);
         setStartingPoint(&arm,&startPointArm,&startButton,&startButtonText);
         setTargetPoint(&arm,&targetPointArm,&targetButton,&targetButtonText);
         isArmOkey(&arm,&startPointArm,&targetPointArm,&stopButton,&stopButtonText,&moveButton,&moveButtonText);
@@ -293,6 +320,26 @@ int main(void)
 
             DrawRectangleRec(startButton.rect,startButton.color);
             DrawText(startButtonText.text,startButtonText.cords.x,startButtonText.cords.y,startButtonText.fontSize,startButtonText.color);
+
+            //1024 576
+
+            //PID Values
+            char charPValue[50];  
+            sprintf(charPValue, "%.2f",arm.Kp);
+            DrawText("P: ",400,420,20,MRZ_WHITE);
+            DrawText(charPValue,400+20,420,20,MRZ_WHITE);
+
+            char charIValue[50];  
+            sprintf(charIValue, "%.2f",arm.Ki);
+            DrawText("I: ",525,420,20,MRZ_WHITE);
+            DrawText(charIValue,525+20,420,20,MRZ_WHITE);
+
+            char charDValue[50];  
+            sprintf(charDValue, "%.2f",arm.Kd);
+            DrawText("D: ",635,420,20,MRZ_WHITE);
+            DrawText(charDValue,635+20,420,20,MRZ_WHITE);
+
+            DrawText("Press T-Y for P, G-H for I, B-N for D",350,470,20,MRZ_WHITE);
 
         EndDrawing();
     }
