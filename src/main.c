@@ -1,4 +1,4 @@
-#include "include/raylib.h"
+#include "C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\include\raylib.h"
 #include <stdio.h>
 #include <math.h>
 
@@ -283,6 +283,8 @@ int main(void)
         BeginDrawing();
 
             ClearBackground(MRZ_GRAY);
+
+            DrawFPS(0,0);
     
             //Draw them arms
             DrawRectanglePro(arm.rect,arm.origin,arm.rotation,arm.color);

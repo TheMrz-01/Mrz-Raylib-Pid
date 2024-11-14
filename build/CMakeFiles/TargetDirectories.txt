@@ -1,0 +1,3 @@
+C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/build/CMakeFiles/Mrz-Raylib-Pid.dir
+C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/build/CMakeFiles/edit_cache.dir
+C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/build/CMakeFiles/rebuild_cache.dir

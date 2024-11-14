@@ -1,0 +1,1 @@
+  -L"C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/lib"  "C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/lib/libraylib.a" -lraylib -lwinmm -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
