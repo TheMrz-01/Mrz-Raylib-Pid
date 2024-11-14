@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/src/main.c" "CMakeFiles/Mrz-Raylib-Pid.dir/src/main.c.obj" "gcc" "CMakeFiles/Mrz-Raylib-Pid.dir/src/main.c.obj.d"
+  "C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/src/main.cpp" "CMakeFiles/Mrz-Raylib-Pid.dir/src/main.cpp.obj" "gcc" "CMakeFiles/Mrz-Raylib-Pid.dir/src/main.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

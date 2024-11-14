@@ -1,4 +1,4 @@
-#include "C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\include\raylib.h"
+#include "..\include\raylib.h"
 #include <stdio.h>
 #include <math.h>
 
@@ -136,7 +136,7 @@ void setTargetPoint(Arm* refArm,Arm* arm,Button* button,ButtonText* text){
     }
 }
 
-int isArmOkey(Arm* arm,Arm* startArm,Arm* targetArm,Button* stopButton,ButtonText* stopText,Button* moveButton,ButtonText* moveText){
+void isArmOkey(Arm* arm,Arm* startArm,Arm* targetArm,Button* stopButton,ButtonText* stopText,Button* moveButton,ButtonText* moveText){
     if(IsMouseButtonDown(0) && (635 > GetMousePosition().x) && (GetMousePosition().x > 580) && (370 > GetMousePosition().y) && (GetMousePosition().y > 350)){
         stopButton->color = MRZ_PRESSED_WHITE;
         stopText->color = MRZ_PRESSED_GRAY;
@@ -158,7 +158,7 @@ int isArmOkey(Arm* arm,Arm* startArm,Arm* targetArm,Button* stopButton,ButtonTex
         moveButton->color = MRZ_WHITE;
         moveText->color = MRZ_GRAY;  
         stopButton->color = MRZ_WHITE;
-        stopText->color = MRZ_GRAY;   
+        stopText->color = MRZ_GRAY;
     }
 }
 
@@ -171,7 +171,7 @@ void applyGravity(Arm* arm){
 }
 
 void applyPhysics(Arm* arm){
-    applyGravity(&arm);
+    applyGravity(arm);
 
     arm->velocity += arm->acceleration * GetFrameTime();
     arm->velocity -= arm->velocity * damping * GetFrameTime();
@@ -195,10 +195,14 @@ void moveArm(Arm* arm,Arm* startArm,Arm* targetArm){
 int main(void)
 {
     InitWindow(SCREENWIDTH, SCREENHEIGHT, "Pid Controller");
+
     SetTargetFPS(60);
 
     //Normal Arm Thingy
     arm.speed = 100.0;
+
+    printf("Ambassing\n");
+
     arm.rotation = 90.0;
     arm.color = MRZ_RED_ORANGE;
     arm.rect = (Rectangle){200,225,2*2,80*2};
@@ -265,6 +269,8 @@ int main(void)
     stopButtonText.cords = (Vector2){stopButton.rect.x + 4,stopButton.rect.y};
     stopButtonText.color = MRZ_GRAY;
 
+    printf("Hahahah\n");
+
     while (!WindowShouldClose())
     {
         controlArmPos(&arm);
@@ -275,9 +281,8 @@ int main(void)
 
         if(goForArm){
             moveArm(&arm,&startPointArm,&targetPointArm);
+            applyPhysics(&arm);
         }
-
-        applyPhysics(&arm);
 
         //Drawing shit goes here
         BeginDrawing();
