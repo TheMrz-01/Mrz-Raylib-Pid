@@ -2,7 +2,10 @@
     "files.associations": {
         "raylib.h": "c",
         "stdio.h": "c",
-        "math.h": "c"
+        "math.h": "c",
+        "cmath": "cpp",
+        "arms.h": "c",
+        "iostream": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }
