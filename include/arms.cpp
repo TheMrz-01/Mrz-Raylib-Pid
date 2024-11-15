@@ -1,4 +1,8 @@
 #include "arms.h"
+#include "motors.h"
+
+extern Motor Falcon500;
+extern Motor KarkenX60;
 
 //Start arm vars
 Rectangle startRect = {200,225,2*2,80*2};
@@ -98,7 +102,7 @@ void MechArm::applyPhysics(){
     return;
 }
 
-void MechArm::moveArm(Arm* targetArm){
+void MechArm::moveArm(Arm* targetArm,Motor* motor){
     error = targetArm->getRotation() - rotation;
     proportional = error;
     integral += error * GetFrameTime();
@@ -106,8 +110,15 @@ void MechArm::moveArm(Arm* targetArm){
     output = Kp * proportional + Ki * integral  + Kd * derivative;
     previousError = error;
 
+    if (output > 12) {
+        output = 12;
+    } else if (output < 0) {
+        output = 0;
+    }
+
     //Wait here lil ling ling
-    acceleration = output;
+    //acceleration = output;
+    motor->setVoltage(output);
 
     return;
 }

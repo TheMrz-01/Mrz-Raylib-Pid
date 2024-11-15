@@ -1,11 +1,12 @@
 #pragma once
-
-#include "raylib.h"
+#include "motors.h"
 #include "mrzColors.h"
 #include <iostream>
 #include <cmath>
 
-const float gravity = 9.81f;
+extern Motor Falcon500;
+extern Motor KarkenX60;
+
 const float damping = 0.1f;
 
 class Arm{
@@ -112,7 +113,7 @@ public:
     void controlPIDValues();
     void applyGravity();
     void applyPhysics();
-    void moveArm(Arm* targetArm);
+    void moveArm(Arm* targetArm,Motor* motor);
 
 private:
     //Raylib stuff

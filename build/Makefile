@@ -158,6 +158,30 @@ include/arms.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mrz-Raylib-Pid.dir\build.make CMakeFiles/Mrz-Raylib-Pid.dir/include/arms.cpp.s
 .PHONY : include/arms.cpp.s
 
+include/gearboxs.obj: include/gearboxs.cpp.obj
+.PHONY : include/gearboxs.obj
+
+# target to build an object file
+include/gearboxs.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mrz-Raylib-Pid.dir\build.make CMakeFiles/Mrz-Raylib-Pid.dir/include/gearboxs.cpp.obj
+.PHONY : include/gearboxs.cpp.obj
+
+include/gearboxs.i: include/gearboxs.cpp.i
+.PHONY : include/gearboxs.i
+
+# target to preprocess a source file
+include/gearboxs.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mrz-Raylib-Pid.dir\build.make CMakeFiles/Mrz-Raylib-Pid.dir/include/gearboxs.cpp.i
+.PHONY : include/gearboxs.cpp.i
+
+include/gearboxs.s: include/gearboxs.cpp.s
+.PHONY : include/gearboxs.s
+
+# target to generate assembly for a file
+include/gearboxs.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mrz-Raylib-Pid.dir\build.make CMakeFiles/Mrz-Raylib-Pid.dir/include/gearboxs.cpp.s
+.PHONY : include/gearboxs.cpp.s
+
 include/motors.obj: include/motors.cpp.obj
 .PHONY : include/motors.obj
 
@@ -218,6 +242,9 @@ help:
 	@echo ... include/arms.obj
 	@echo ... include/arms.i
 	@echo ... include/arms.s
+	@echo ... include/gearboxs.obj
+	@echo ... include/gearboxs.i
+	@echo ... include/gearboxs.s
 	@echo ... include/motors.obj
 	@echo ... include/motors.i
 	@echo ... include/motors.s

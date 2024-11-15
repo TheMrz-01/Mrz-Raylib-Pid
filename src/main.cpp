@@ -16,6 +16,9 @@ extern MechArm mechArm;
 extern Arm startArm;
 extern Arm targetArm; 
 
+extern Motor KrakenX60;
+extern Motor Falcon500;
+
 typedef struct Button{
     Rectangle rect;
     Color color;
@@ -64,13 +67,14 @@ void setTargetPoint(Button* button,ButtonText* text){
     }
 }
 
-void isArmOkey(Button* stopButton,ButtonText* stopText,Button* moveButton,ButtonText* moveText){
+void isArmOkey(Motor* motor,Button* stopButton,ButtonText* stopText,Button* moveButton,ButtonText* moveText){
     if(IsMouseButtonDown(0) && (635 > GetMousePosition().x) && (GetMousePosition().x > 580) && (370 > GetMousePosition().y) && (GetMousePosition().y > 350)){
         stopButton->color = MRZ_PRESSED_WHITE;
         stopText->color = MRZ_PRESSED_GRAY;
         mechArm.setGoForArm(0);
         mechArm.setAcceleration(0);
         mechArm.setVelocity(0);
+        motor->stopMotor();
     }
     else if(IsMouseButtonDown(0) && (515 > GetMousePosition().x) && (GetMousePosition().x > 460) && (370 > GetMousePosition().y) && (GetMousePosition().y > 350)){
         moveButton->color = MRZ_PRESSED_WHITE;
@@ -83,6 +87,7 @@ void isArmOkey(Button* stopButton,ButtonText* stopText,Button* moveButton,Button
         //previous_error = 0;
         //delete thi later
         mechArm.setPreviousError(targetArm.getRotation() - mechArm.getRotation());
+        motor->startMotor();
     }
     else{
         moveButton->color = MRZ_WHITE;
@@ -146,10 +151,10 @@ int main(void)
         mechArm.controlPIDValues();
         setStartingPoint(&startButton,&startButtonText);
         setTargetPoint(&targetButton,&targetButtonText);
-        isArmOkey(&stopButton,&stopButtonText,&moveButton,&moveButtonText);
+        isArmOkey(&KrakenX60,&stopButton,&stopButtonText,&moveButton,&moveButtonText);
 
         if(mechArm.getGoForArm()){
-            mechArm.moveArm(&targetArm);
+            mechArm.moveArm(&targetArm,&KrakenX60);
             mechArm.applyPhysics();
         }
 

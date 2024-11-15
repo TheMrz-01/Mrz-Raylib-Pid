@@ -1,7 +1,6 @@
-CMakeFiles/Mrz-Raylib-Pid.dir/src/main.cpp.obj: \
- C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\src\main.cpp \
- C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/include/arms.h \
- C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/include/motors.h \
+CMakeFiles/Mrz-Raylib-Pid.dir/include/gearboxs.cpp.obj: \
+ C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\include\gearboxs.cpp \
+ C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\include\gearboxs.h \
  C:/msys64/mingw64/include/c++/13.1.0/string \
  C:/msys64/mingw64/include/c++/13.1.0/bits/requires_hosted.h \
  C:/msys64/mingw64/include/c++/13.1.0/x86_64-w64-mingw32/bits/c++config.h \
@@ -96,70 +95,4 @@ CMakeFiles/Mrz-Raylib-Pid.dir/src/main.cpp.obj: \
  C:/msys64/mingw64/include/stddef.h \
  C:/msys64/mingw64/include/c++/13.1.0/bits/uses_allocator.h \
  C:/msys64/mingw64/include/c++/13.1.0/bits/uses_allocator_args.h \
- C:/msys64/mingw64/include/c++/13.1.0/tuple \
- C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/include/raylib.h \
- C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stdarg.h \
- C:/msys64/mingw64/include/stdarg.h \
- C:/msys64/mingw64/include/_mingw_stdarg.h \
- C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/include/mrzColors.h \
- C:/msys64/mingw64/include/c++/13.1.0/iostream \
- C:/msys64/mingw64/include/c++/13.1.0/ostream \
- C:/msys64/mingw64/include/c++/13.1.0/ios \
- C:/msys64/mingw64/include/c++/13.1.0/exception \
- C:/msys64/mingw64/include/c++/13.1.0/bits/exception_ptr.h \
- C:/msys64/mingw64/include/c++/13.1.0/bits/cxxabi_init_exception.h \
- C:/msys64/mingw64/include/c++/13.1.0/typeinfo \
- C:/msys64/mingw64/include/c++/13.1.0/bits/nested_exception.h \
- C:/msys64/mingw64/include/c++/13.1.0/bits/ios_base.h \
- C:/msys64/mingw64/include/c++/13.1.0/ext/atomicity.h \
- C:/msys64/mingw64/include/c++/13.1.0/x86_64-w64-mingw32/bits/gthr.h \
- C:/msys64/mingw64/include/c++/13.1.0/x86_64-w64-mingw32/bits/gthr-default.h \
- C:/msys64/mingw64/include/pthread.h \
- C:/msys64/mingw64/include/sys/types.h \
- C:/msys64/mingw64/include/process.h \
- C:/msys64/mingw64/include/corecrt_startup.h \
- C:/msys64/mingw64/include/signal.h \
- C:/msys64/mingw64/include/pthread_signal.h \
- C:/msys64/mingw64/include/time.h C:/msys64/mingw64/include/sys/timeb.h \
- C:/msys64/mingw64/include/sec_api/sys/timeb_s.h \
- C:/msys64/mingw64/include/_timeval.h \
- C:/msys64/mingw64/include/pthread_time.h \
- C:/msys64/mingw64/include/pthread_compat.h \
- C:/msys64/mingw64/include/pthread_unistd.h \
- C:/msys64/mingw64/include/c++/13.1.0/x86_64-w64-mingw32/bits/atomic_word.h \
- C:/msys64/mingw64/include/c++/13.1.0/bits/locale_classes.h \
- C:/msys64/mingw64/include/c++/13.1.0/bits/locale_classes.tcc \
- C:/msys64/mingw64/include/c++/13.1.0/system_error \
- C:/msys64/mingw64/include/c++/13.1.0/x86_64-w64-mingw32/bits/error_constants.h \
- C:/msys64/mingw64/include/c++/13.1.0/stdexcept \
- C:/msys64/mingw64/include/c++/13.1.0/streambuf \
- C:/msys64/mingw64/include/c++/13.1.0/bits/streambuf.tcc \
- C:/msys64/mingw64/include/c++/13.1.0/bits/basic_ios.h \
- C:/msys64/mingw64/include/c++/13.1.0/bits/locale_facets.h \
- C:/msys64/mingw64/include/c++/13.1.0/cwctype \
- C:/msys64/mingw64/include/wctype.h \
- C:/msys64/mingw64/include/c++/13.1.0/x86_64-w64-mingw32/bits/ctype_base.h \
- C:/msys64/mingw64/include/c++/13.1.0/bits/streambuf_iterator.h \
- C:/msys64/mingw64/include/c++/13.1.0/x86_64-w64-mingw32/bits/ctype_inline.h \
- C:/msys64/mingw64/include/c++/13.1.0/bits/locale_facets.tcc \
- C:/msys64/mingw64/include/c++/13.1.0/bits/basic_ios.tcc \
- C:/msys64/mingw64/include/c++/13.1.0/bits/ostream.tcc \
- C:/msys64/mingw64/include/c++/13.1.0/istream \
- C:/msys64/mingw64/include/c++/13.1.0/bits/istream.tcc \
- C:/msys64/mingw64/include/c++/13.1.0/cmath \
- C:/msys64/mingw64/include/math.h \
- C:/msys64/mingw64/include/c++/13.1.0/bits/specfun.h \
- C:/msys64/mingw64/include/c++/13.1.0/limits \
- C:/msys64/mingw64/include/c++/13.1.0/tr1/gamma.tcc \
- C:/msys64/mingw64/include/c++/13.1.0/tr1/special_function_util.h \
- C:/msys64/mingw64/include/c++/13.1.0/tr1/bessel_function.tcc \
- C:/msys64/mingw64/include/c++/13.1.0/tr1/beta_function.tcc \
- C:/msys64/mingw64/include/c++/13.1.0/tr1/ell_integral.tcc \
- C:/msys64/mingw64/include/c++/13.1.0/tr1/exp_integral.tcc \
- C:/msys64/mingw64/include/c++/13.1.0/tr1/hypergeometric.tcc \
- C:/msys64/mingw64/include/c++/13.1.0/tr1/legendre_function.tcc \
- C:/msys64/mingw64/include/c++/13.1.0/tr1/modified_bessel_func.tcc \
- C:/msys64/mingw64/include/c++/13.1.0/tr1/poly_hermite.tcc \
- C:/msys64/mingw64/include/c++/13.1.0/tr1/poly_laguerre.tcc \
- C:/msys64/mingw64/include/c++/13.1.0/tr1/riemann_zeta.tcc \
- C:/msys64/mingw64/include/c++/13.1.0/math.h
+ C:/msys64/mingw64/include/c++/13.1.0/tuple

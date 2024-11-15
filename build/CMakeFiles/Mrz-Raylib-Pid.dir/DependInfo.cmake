@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/include/arms.cpp" "CMakeFiles/Mrz-Raylib-Pid.dir/include/arms.cpp.obj" "gcc" "CMakeFiles/Mrz-Raylib-Pid.dir/include/arms.cpp.obj.d"
+  "C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/include/gearboxs.cpp" "CMakeFiles/Mrz-Raylib-Pid.dir/include/gearboxs.cpp.obj" "gcc" "CMakeFiles/Mrz-Raylib-Pid.dir/include/gearboxs.cpp.obj.d"
   "C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/include/motors.cpp" "CMakeFiles/Mrz-Raylib-Pid.dir/include/motors.cpp.obj" "gcc" "CMakeFiles/Mrz-Raylib-Pid.dir/include/motors.cpp.obj.d"
   "C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/src/main.cpp" "CMakeFiles/Mrz-Raylib-Pid.dir/src/main.cpp.obj" "gcc" "CMakeFiles/Mrz-Raylib-Pid.dir/src/main.cpp.obj.d"
   )
