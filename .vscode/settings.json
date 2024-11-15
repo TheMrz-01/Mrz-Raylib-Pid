@@ -5,7 +5,8 @@
         "math.h": "c",
         "cmath": "cpp",
         "arms.h": "c",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "mrzcolors.h": "c"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }

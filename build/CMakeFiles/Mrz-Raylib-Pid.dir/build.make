@@ -86,20 +86,54 @@ CMakeFiles/Mrz-Raylib-Pid.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Mrz-Raylib-Pid.dir/src/main.cpp.s"
 	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\src\main.cpp -o CMakeFiles\Mrz-Raylib-Pid.dir\src\main.cpp.s
 
+CMakeFiles/Mrz-Raylib-Pid.dir/include/arms.cpp.obj: CMakeFiles/Mrz-Raylib-Pid.dir/flags.make
+CMakeFiles/Mrz-Raylib-Pid.dir/include/arms.cpp.obj: CMakeFiles/Mrz-Raylib-Pid.dir/includes_CXX.rsp
+CMakeFiles/Mrz-Raylib-Pid.dir/include/arms.cpp.obj: C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/include/arms.cpp
+CMakeFiles/Mrz-Raylib-Pid.dir/include/arms.cpp.obj: CMakeFiles/Mrz-Raylib-Pid.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Mrz-Raylib-Pid.dir/include/arms.cpp.obj"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Mrz-Raylib-Pid.dir/include/arms.cpp.obj -MF CMakeFiles\Mrz-Raylib-Pid.dir\include\arms.cpp.obj.d -o CMakeFiles\Mrz-Raylib-Pid.dir\include\arms.cpp.obj -c C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\include\arms.cpp
+
+CMakeFiles/Mrz-Raylib-Pid.dir/include/arms.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Mrz-Raylib-Pid.dir/include/arms.cpp.i"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\include\arms.cpp > CMakeFiles\Mrz-Raylib-Pid.dir\include\arms.cpp.i
+
+CMakeFiles/Mrz-Raylib-Pid.dir/include/arms.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Mrz-Raylib-Pid.dir/include/arms.cpp.s"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\include\arms.cpp -o CMakeFiles\Mrz-Raylib-Pid.dir\include\arms.cpp.s
+
+CMakeFiles/Mrz-Raylib-Pid.dir/include/motors.cpp.obj: CMakeFiles/Mrz-Raylib-Pid.dir/flags.make
+CMakeFiles/Mrz-Raylib-Pid.dir/include/motors.cpp.obj: CMakeFiles/Mrz-Raylib-Pid.dir/includes_CXX.rsp
+CMakeFiles/Mrz-Raylib-Pid.dir/include/motors.cpp.obj: C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/include/motors.cpp
+CMakeFiles/Mrz-Raylib-Pid.dir/include/motors.cpp.obj: CMakeFiles/Mrz-Raylib-Pid.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Mrz-Raylib-Pid.dir/include/motors.cpp.obj"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Mrz-Raylib-Pid.dir/include/motors.cpp.obj -MF CMakeFiles\Mrz-Raylib-Pid.dir\include\motors.cpp.obj.d -o CMakeFiles\Mrz-Raylib-Pid.dir\include\motors.cpp.obj -c C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\include\motors.cpp
+
+CMakeFiles/Mrz-Raylib-Pid.dir/include/motors.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Mrz-Raylib-Pid.dir/include/motors.cpp.i"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\include\motors.cpp > CMakeFiles\Mrz-Raylib-Pid.dir\include\motors.cpp.i
+
+CMakeFiles/Mrz-Raylib-Pid.dir/include/motors.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Mrz-Raylib-Pid.dir/include/motors.cpp.s"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\include\motors.cpp -o CMakeFiles\Mrz-Raylib-Pid.dir\include\motors.cpp.s
+
 # Object files for target Mrz-Raylib-Pid
 Mrz__Raylib__Pid_OBJECTS = \
-"CMakeFiles/Mrz-Raylib-Pid.dir/src/main.cpp.obj"
+"CMakeFiles/Mrz-Raylib-Pid.dir/src/main.cpp.obj" \
+"CMakeFiles/Mrz-Raylib-Pid.dir/include/arms.cpp.obj" \
+"CMakeFiles/Mrz-Raylib-Pid.dir/include/motors.cpp.obj"
 
 # External object files for target Mrz-Raylib-Pid
 Mrz__Raylib__Pid_EXTERNAL_OBJECTS =
 
 Mrz-Raylib-Pid.exe: CMakeFiles/Mrz-Raylib-Pid.dir/src/main.cpp.obj
+Mrz-Raylib-Pid.exe: CMakeFiles/Mrz-Raylib-Pid.dir/include/arms.cpp.obj
+Mrz-Raylib-Pid.exe: CMakeFiles/Mrz-Raylib-Pid.dir/include/motors.cpp.obj
 Mrz-Raylib-Pid.exe: CMakeFiles/Mrz-Raylib-Pid.dir/build.make
 Mrz-Raylib-Pid.exe: C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/lib/libraylib.a
 Mrz-Raylib-Pid.exe: CMakeFiles/Mrz-Raylib-Pid.dir/linkLibs.rsp
 Mrz-Raylib-Pid.exe: CMakeFiles/Mrz-Raylib-Pid.dir/objects1.rsp
 Mrz-Raylib-Pid.exe: CMakeFiles/Mrz-Raylib-Pid.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Mrz-Raylib-Pid.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Mrz-Raylib-Pid.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Mrz-Raylib-Pid.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

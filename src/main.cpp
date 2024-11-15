@@ -9,8 +9,6 @@
 #include <iostream>
 #include <cmath>
 
-#define GRAVITY 9.8f
-
 #define SCREENWIDTH 1024
 #define SCREENHEIGHT 576
 
@@ -42,15 +40,11 @@ ButtonText targetButtonText = { 0 };
 ButtonText moveButtonText = { 0 };
 ButtonText stopButtonText = { 0 };
 
-bool isAtStart = false;
-
-const float damping = 0.1;
-
-void setStartingPoint(Arm* refArm,Arm* arm,Button* button,ButtonText* text){
+void setStartingPoint(Button* button,ButtonText* text){
     if(IsMouseButtonDown(0) && (440 > GetMousePosition().x) && (GetMousePosition().x > 400) && (220 > GetMousePosition().y) && (GetMousePosition().y > 200)){
         button->color = MRZ_PRESSED_WHITE;
         text->color = MRZ_PRESSED_GRAY;
-        arm->rotation = refArm->rotation;
+        startArm.setRotation(mechArm.getRotation());
     }
     else{
         button->color = MRZ_WHITE;
@@ -58,11 +52,11 @@ void setStartingPoint(Arm* refArm,Arm* arm,Button* button,ButtonText* text){
     }
 }
 
-void setTargetPoint(Arm* refArm,Arm* arm,Button* button,ButtonText* text){
+void setTargetPoint(Button* button,ButtonText* text){
     if(IsMouseButtonDown(0) && (440 > GetMousePosition().x) && (GetMousePosition().x > 400) && (270 > GetMousePosition().y) && (GetMousePosition().y > 250)){
         button->color = MRZ_PRESSED_WHITE;
         text->color = MRZ_PRESSED_GRAY;
-        arm->rotation = refArm->rotation;
+        targetArm.setRotation(mechArm.getRotation());
     }
     else{
         button->color = MRZ_WHITE;
@@ -70,23 +64,25 @@ void setTargetPoint(Arm* refArm,Arm* arm,Button* button,ButtonText* text){
     }
 }
 
-void isArmOkey(Arm* arm,Arm* startArm,Arm* targetArm,Button* stopButton,ButtonText* stopText,Button* moveButton,ButtonText* moveText){
+void isArmOkey(Button* stopButton,ButtonText* stopText,Button* moveButton,ButtonText* moveText){
     if(IsMouseButtonDown(0) && (635 > GetMousePosition().x) && (GetMousePosition().x > 580) && (370 > GetMousePosition().y) && (GetMousePosition().y > 350)){
         stopButton->color = MRZ_PRESSED_WHITE;
         stopText->color = MRZ_PRESSED_GRAY;
-        //goForArm = false;
-        arm->acceleration = 0;
-        arm->velocity = 0;
+        mechArm.setGoForArm(0);
+        mechArm.setAcceleration(0);
+        mechArm.setVelocity(0);
     }
     else if(IsMouseButtonDown(0) && (515 > GetMousePosition().x) && (GetMousePosition().x > 460) && (370 > GetMousePosition().y) && (GetMousePosition().y > 350)){
         moveButton->color = MRZ_PRESSED_WHITE;
         moveText->color = MRZ_PRESSED_GRAY;
-        arm->rotation = startArm->rotation;
-        //goForArm = true;
-        integral = 0;
+        mechArm.setAcceleration(0);
+        mechArm.setVelocity(0);
+        mechArm.setRotation(startArm.getRotation());
+        mechArm.setGoForArm(1);
+        mechArm.setIntegral(0);
         //previous_error = 0;
         //delete thi later
-        previous_error = targetArm->rotation - arm->rotation;
+        mechArm.setPreviousError(targetArm.getRotation() - mechArm.getRotation());
     }
     else{
         moveButton->color = MRZ_WHITE;
@@ -95,36 +91,6 @@ void isArmOkey(Arm* arm,Arm* startArm,Arm* targetArm,Button* stopButton,ButtonTe
         stopText->color = MRZ_GRAY;
     }
 }
-
-/*void applyGravity(Arm* arm){
-    float angleInRadians = arm->rotation * (PI / 180.0f);
-    float gravityTorque = GRAVITY * ARM_MASS * ARM_LENGTH * sin(angleInRadians) / 2;
-
-    float gravitationalAcceleration = gravityTorque / (ARM_MASS * ARM_LENGTH * ARM_LENGTH / 3);
-    arm->acceleration += gravitationalAcceleration;
-}*/
-
-/*void applyPhysics(Arm* arm){
-    applyGravity(arm);
-
-    arm->velocity += arm->acceleration * GetFrameTime();
-    arm->velocity -= arm->velocity * damping * GetFrameTime();
-    arm->rotation += arm->velocity * GetFrameTime();
-}*/
-
-/*void moveArm(Arm* arm,Arm* startArm,Arm* targetArm){
-    error = targetArm->rotation - arm->rotation;
-    proportional = error;
-    integral += error * GetFrameTime();
-    derivative = (error - previous_error) / GetFrameTime();
-    output = arm->Kp * proportional + arm->Ki * integral  + arm->Kd * derivative;
-    previous_error = error;
-    //arm->rotation += output * GetFrameTime(); This will stay like this for some time
-    //WaitTime(GetFrameTime());
-
-    //Wait here lil ling ling
-    arm->acceleration = output;
-}*/
 
 int main(void)
 {
@@ -178,13 +144,13 @@ int main(void)
     {
         mechArm.controlArm();
         mechArm.controlPIDValues();
-        setStartingPoint(&mechArm,&startArm,&startButton,&startButtonText);
-        setTargetPoint(&mechArm,&targetArm,&targetButton,&targetButtonText);
-        isArmOkey(&mechArm,&startArm,&targetArm,&stopButton,&stopButtonText,&moveButton,&moveButtonText);
+        setStartingPoint(&startButton,&startButtonText);
+        setTargetPoint(&targetButton,&targetButtonText);
+        isArmOkey(&stopButton,&stopButtonText,&moveButton,&moveButtonText);
 
         if(mechArm.getGoForArm()){
-            moveArm(&arm,&startPointArm,&targetPointArm);
-            applyPhysics(&arm);
+            mechArm.moveArm(&targetArm);
+            mechArm.applyPhysics();
         }
 
         //Drawing shit goes here

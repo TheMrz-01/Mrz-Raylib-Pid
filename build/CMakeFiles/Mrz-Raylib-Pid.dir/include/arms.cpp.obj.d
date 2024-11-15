@@ -1,7 +1,7 @@
-CMakeFiles/Mrz-Raylib-Pid.dir/src/main.cpp.obj: \
- C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\src\main.cpp \
- C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/include/arms.h \
- C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/include/raylib.h \
+CMakeFiles/Mrz-Raylib-Pid.dir/include/arms.cpp.obj: \
+ C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\include\arms.cpp \
+ C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\include\arms.h \
+ C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\include\raylib.h \
  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stdarg.h \
  C:/msys64/mingw64/include/stdarg.h \
  C:/msys64/mingw64/include/_mingw_stdarg.h \
@@ -9,7 +9,7 @@ CMakeFiles/Mrz-Raylib-Pid.dir/src/main.cpp.obj: \
  C:/msys64/mingw64/include/_mingw_mac.h \
  C:/msys64/mingw64/include/_mingw_secapi.h \
  C:/msys64/mingw64/include/sdks/_mingw_ddk.h \
- C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/include/mrzColors.h \
+ C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\include\mrzColors.h \
  C:/msys64/mingw64/include/c++/13.1.0/iostream \
  C:/msys64/mingw64/include/c++/13.1.0/bits/requires_hosted.h \
  C:/msys64/mingw64/include/c++/13.1.0/x86_64-w64-mingw32/bits/c++config.h \
@@ -156,6 +156,4 @@ CMakeFiles/Mrz-Raylib-Pid.dir/src/main.cpp.obj: \
  C:/msys64/mingw64/include/c++/13.1.0/tr1/modified_bessel_func.tcc \
  C:/msys64/mingw64/include/c++/13.1.0/tr1/poly_hermite.tcc \
  C:/msys64/mingw64/include/c++/13.1.0/tr1/poly_laguerre.tcc \
- C:/msys64/mingw64/include/c++/13.1.0/tr1/riemann_zeta.tcc \
- C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/include/motors.h \
- C:/msys64/mingw64/include/c++/13.1.0/math.h
+ C:/msys64/mingw64/include/c++/13.1.0/tr1/riemann_zeta.tcc

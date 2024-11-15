@@ -134,6 +134,54 @@ Mrz-Raylib-Pid/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mrz-Raylib-Pid.dir\build.make CMakeFiles/Mrz-Raylib-Pid.dir/build
 .PHONY : Mrz-Raylib-Pid/fast
 
+include/arms.obj: include/arms.cpp.obj
+.PHONY : include/arms.obj
+
+# target to build an object file
+include/arms.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mrz-Raylib-Pid.dir\build.make CMakeFiles/Mrz-Raylib-Pid.dir/include/arms.cpp.obj
+.PHONY : include/arms.cpp.obj
+
+include/arms.i: include/arms.cpp.i
+.PHONY : include/arms.i
+
+# target to preprocess a source file
+include/arms.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mrz-Raylib-Pid.dir\build.make CMakeFiles/Mrz-Raylib-Pid.dir/include/arms.cpp.i
+.PHONY : include/arms.cpp.i
+
+include/arms.s: include/arms.cpp.s
+.PHONY : include/arms.s
+
+# target to generate assembly for a file
+include/arms.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mrz-Raylib-Pid.dir\build.make CMakeFiles/Mrz-Raylib-Pid.dir/include/arms.cpp.s
+.PHONY : include/arms.cpp.s
+
+include/motors.obj: include/motors.cpp.obj
+.PHONY : include/motors.obj
+
+# target to build an object file
+include/motors.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mrz-Raylib-Pid.dir\build.make CMakeFiles/Mrz-Raylib-Pid.dir/include/motors.cpp.obj
+.PHONY : include/motors.cpp.obj
+
+include/motors.i: include/motors.cpp.i
+.PHONY : include/motors.i
+
+# target to preprocess a source file
+include/motors.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mrz-Raylib-Pid.dir\build.make CMakeFiles/Mrz-Raylib-Pid.dir/include/motors.cpp.i
+.PHONY : include/motors.cpp.i
+
+include/motors.s: include/motors.cpp.s
+.PHONY : include/motors.s
+
+# target to generate assembly for a file
+include/motors.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mrz-Raylib-Pid.dir\build.make CMakeFiles/Mrz-Raylib-Pid.dir/include/motors.cpp.s
+.PHONY : include/motors.cpp.s
+
 src/main.obj: src/main.cpp.obj
 .PHONY : src/main.obj
 
@@ -167,6 +215,12 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Mrz-Raylib-Pid
+	@echo ... include/arms.obj
+	@echo ... include/arms.i
+	@echo ... include/arms.s
+	@echo ... include/motors.obj
+	@echo ... include/motors.i
+	@echo ... include/motors.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s

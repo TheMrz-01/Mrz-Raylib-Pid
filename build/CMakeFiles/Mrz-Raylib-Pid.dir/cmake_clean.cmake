@@ -1,4 +1,8 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Mrz-Raylib-Pid.dir/include/arms.cpp.obj"
+  "CMakeFiles/Mrz-Raylib-Pid.dir/include/arms.cpp.obj.d"
+  "CMakeFiles/Mrz-Raylib-Pid.dir/include/motors.cpp.obj"
+  "CMakeFiles/Mrz-Raylib-Pid.dir/include/motors.cpp.obj.d"
   "CMakeFiles/Mrz-Raylib-Pid.dir/src/main.cpp.obj"
   "CMakeFiles/Mrz-Raylib-Pid.dir/src/main.cpp.obj.d"
   "Mrz-Raylib-Pid.exe"
