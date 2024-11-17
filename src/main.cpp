@@ -87,6 +87,8 @@ void isArmOkey(Motor* motor,Button* stopButton,ButtonText* stopText,Button* move
         //previous_error = 0;
         //delete thi later
         mechArm.setPreviousError(targetArm.getRotation() - mechArm.getRotation());
+        motor->setAppliedCurrent(30);
+        motor->setAppliedVoltage(12);
         motor->startMotor();
     }
     else{
@@ -142,8 +144,6 @@ int main(void)
     stopButtonText.fontSize = 20;
     stopButtonText.cords = (Vector2){stopButton.rect.x + 4,stopButton.rect.y};
     stopButtonText.color = MRZ_GRAY;
-
-    printf("Hahahah\n");
 
     while (!WindowShouldClose())
     {

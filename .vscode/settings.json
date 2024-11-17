@@ -56,7 +56,8 @@
         "streambuf": "cpp",
         "typeinfo": "cpp",
         "variant": "cpp",
-        "motors.h": "c"
+        "motors.h": "c",
+        "xutility": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }

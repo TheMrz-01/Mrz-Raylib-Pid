@@ -7,11 +7,13 @@ const float pi = 3.14159f;
 
 class Motor {
 public:
-    Motor(std::string name,float voltage, float noLoadRpm, float noLoadCurrent,
-    float stallTorque, float stallCurrent, float peakPower, 
-    float peakEfficiency, float efficiencyAt,float efficiencyAtPower,
+    Motor(std::string name,float maxVoltage,float minVoltage,float appliedVoltage,float appliedCurrent,
+    float noLoadRpm,float noLoadCurrent,
+    float stallTorque,float stallCurrent,float peakPower, 
+    float peakEfficiency,float efficiencyAt,float efficiencyAtPower,
     float rotorRadius,float rotorMass) :
-    name(name),voltage(voltage),noLoadRpm(noLoadRpm),noLoadCurrent(noLoadCurrent),
+    name(name),maxVoltage(maxVoltage),minVoltage(minVoltage),appliedVoltage(appliedVoltage),
+    appliedCurrent(appliedCurrent),noLoadRpm(noLoadRpm),noLoadCurrent(noLoadCurrent),
     stallTorque(stallTorque),stallCurrent(stallCurrent),peakPower(peakPower),
     peakEfficiency(peakEfficiency),efficiencyAt(efficiencyAt),
     efficiencyAtPower(efficiencyAtPower),rotorRadius(rotorRadius),rotorMass(rotorMass)
@@ -19,7 +21,10 @@ public:
 
     //Getters
     std::string getName() const { return name; }
-    float getVoltage() const { return voltage; }
+    float getMaxVoltage() const { return maxVoltage; }
+    float getMinVoltage() const { return minVoltage; }
+    float getAppliedVoltage() const { return appliedVoltage; }
+    float getAppliedCurrent() const { return appliedCurrent; }
     float getNoLoadRpm() const { return noLoadRpm; }
     float getNoLoadCurrent() const { return noLoadCurrent; }
     float getStallTorque() const { return stallTorque; }
@@ -33,7 +38,10 @@ public:
 
     // Setters
     void setName(const std::string& name) { this->name = name; }
-    void setVoltage(float newVoltage) { voltage = newVoltage; }
+    void setMaxVoltage(float newMaxVoltage) { maxVoltage = newMaxVoltage; }
+    void setMinVoltage(float newMinVoltage) { minVoltage = newMinVoltage; }
+    void setAppliedVoltage(float newAppliedVoltage) { appliedVoltage = newAppliedVoltage; }
+    void setAppliedCurrent(float newAppliedCurrent) { appliedCurrent = newAppliedCurrent; }
     void setNoLoadRpm(float newNoLoadRpm) { noLoadRpm = newNoLoadRpm; }
     void setNoLoadCurrent(float newNoLoadCurrent) { noLoadCurrent = newNoLoadCurrent; }
     void setStallTorque(float newStallTorque) { stallTorque = newStallTorque; }
@@ -47,10 +55,14 @@ public:
 
     void startMotor();
     void stopMotor();
+    void calculateConstants();
 
 private:
     std::string name;
-    float voltage;
+    float maxVoltage;
+    float minVoltage;
+    float appliedVoltage;
+    float appliedCurrent;
     float noLoadRpm;
     float noLoadCurrent;
     float stallTorque; //Nm

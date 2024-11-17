@@ -104,21 +104,30 @@ void MechArm::applyPhysics(){
 
 void MechArm::moveArm(Arm* targetArm,Motor* motor){
     error = targetArm->getRotation() - rotation;
-    proportional = error;
-    integral += error * GetFrameTime();
-    derivative = (error - previousError) / GetFrameTime();
-    output = Kp * proportional + Ki * integral  + Kd * derivative;
-    previousError = error;
 
-    if (output > 12) {
-        output = 12;
-    } else if (output < 0) {
-        output = 0;
+    //proportional = error;
+    float proportional = Kp * error;
+
+    //integral += error * GetFrameTime();
+    integral += error * GetFrameTime();
+    float integralTerm = Ki * integral;
+
+    //derivative = (error - previousError) / GetFrameTime();
+    float derivative = (error - previousError) / GetFrameTime();
+    float derivativeTerm = Kd * derivative;
+
+    //output = Kp * proportional + Ki * integral  + Kd * derivative;
+    float outputVoltage = proportional + integralTerm + derivativeTerm;
+
+    if (outputVoltage > motor->getMaxVoltage()){
+        outputVoltage = motor->getMaxVoltage();
+    } else if (outputVoltage < motor->getMinVoltage()) {
+        outputVoltage = motor->getMinVoltage();
     }
 
-    //Wait here lil ling ling
-    //acceleration = output;
-    motor->setVoltage(output);
+    previousError = error;
+
+    motor->setAppliedVoltage(outputVoltage);
 
     return;
 }

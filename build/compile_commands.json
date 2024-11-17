@@ -1,0 +1,26 @@
+[
+{
+  "directory": "C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/Mrz-Raylib-Pid.dir/includes_CXX.rsp -O3 -DNDEBUG -o CMakeFiles\\Mrz-Raylib-Pid.dir\\src\\main.cpp.obj -c C:\\Users\\alana\\Desktop\\RaylibExam\\Mrz-Raylib-Pid\\src\\main.cpp",
+  "file": "C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/src/main.cpp",
+  "output": "CMakeFiles/Mrz-Raylib-Pid.dir/src/main.cpp.obj"
+},
+{
+  "directory": "C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/Mrz-Raylib-Pid.dir/includes_CXX.rsp -O3 -DNDEBUG -o CMakeFiles\\Mrz-Raylib-Pid.dir\\include\\arms.cpp.obj -c C:\\Users\\alana\\Desktop\\RaylibExam\\Mrz-Raylib-Pid\\include\\arms.cpp",
+  "file": "C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/include/arms.cpp",
+  "output": "CMakeFiles/Mrz-Raylib-Pid.dir/include/arms.cpp.obj"
+},
+{
+  "directory": "C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/Mrz-Raylib-Pid.dir/includes_CXX.rsp -O3 -DNDEBUG -o CMakeFiles\\Mrz-Raylib-Pid.dir\\include\\motors.cpp.obj -c C:\\Users\\alana\\Desktop\\RaylibExam\\Mrz-Raylib-Pid\\include\\motors.cpp",
+  "file": "C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/include/motors.cpp",
+  "output": "CMakeFiles/Mrz-Raylib-Pid.dir/include/motors.cpp.obj"
+},
+{
+  "directory": "C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/Mrz-Raylib-Pid.dir/includes_CXX.rsp -O3 -DNDEBUG -o CMakeFiles\\Mrz-Raylib-Pid.dir\\include\\gearboxs.cpp.obj -c C:\\Users\\alana\\Desktop\\RaylibExam\\Mrz-Raylib-Pid\\include\\gearboxs.cpp",
+  "file": "C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/include/gearboxs.cpp",
+  "output": "CMakeFiles/Mrz-Raylib-Pid.dir/include/gearboxs.cpp.obj"
+}
+]
