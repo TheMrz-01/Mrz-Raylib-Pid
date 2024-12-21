@@ -10,7 +10,7 @@ set(SOURCES
     src/main.cpp 
     include/arms.cpp 
     include/motors.cpp
-    include/gearboxs.cpp
+    include/mrzUtils.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})

@@ -57,7 +57,9 @@
         "typeinfo": "cpp",
         "variant": "cpp",
         "motors.h": "c",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "xlocale": "cpp",
+        "mrzutils.h": "c"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }

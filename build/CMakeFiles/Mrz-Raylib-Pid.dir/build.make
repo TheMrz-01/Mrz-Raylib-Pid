@@ -116,27 +116,27 @@ CMakeFiles/Mrz-Raylib-Pid.dir/include/motors.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Mrz-Raylib-Pid.dir/include/motors.cpp.s"
 	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\include\motors.cpp -o CMakeFiles\Mrz-Raylib-Pid.dir\include\motors.cpp.s
 
-CMakeFiles/Mrz-Raylib-Pid.dir/include/gearboxs.cpp.obj: CMakeFiles/Mrz-Raylib-Pid.dir/flags.make
-CMakeFiles/Mrz-Raylib-Pid.dir/include/gearboxs.cpp.obj: CMakeFiles/Mrz-Raylib-Pid.dir/includes_CXX.rsp
-CMakeFiles/Mrz-Raylib-Pid.dir/include/gearboxs.cpp.obj: C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/include/gearboxs.cpp
-CMakeFiles/Mrz-Raylib-Pid.dir/include/gearboxs.cpp.obj: CMakeFiles/Mrz-Raylib-Pid.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Mrz-Raylib-Pid.dir/include/gearboxs.cpp.obj"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Mrz-Raylib-Pid.dir/include/gearboxs.cpp.obj -MF CMakeFiles\Mrz-Raylib-Pid.dir\include\gearboxs.cpp.obj.d -o CMakeFiles\Mrz-Raylib-Pid.dir\include\gearboxs.cpp.obj -c C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\include\gearboxs.cpp
+CMakeFiles/Mrz-Raylib-Pid.dir/include/mrzUtils.cpp.obj: CMakeFiles/Mrz-Raylib-Pid.dir/flags.make
+CMakeFiles/Mrz-Raylib-Pid.dir/include/mrzUtils.cpp.obj: CMakeFiles/Mrz-Raylib-Pid.dir/includes_CXX.rsp
+CMakeFiles/Mrz-Raylib-Pid.dir/include/mrzUtils.cpp.obj: C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/include/mrzUtils.cpp
+CMakeFiles/Mrz-Raylib-Pid.dir/include/mrzUtils.cpp.obj: CMakeFiles/Mrz-Raylib-Pid.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Mrz-Raylib-Pid.dir/include/mrzUtils.cpp.obj"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Mrz-Raylib-Pid.dir/include/mrzUtils.cpp.obj -MF CMakeFiles\Mrz-Raylib-Pid.dir\include\mrzUtils.cpp.obj.d -o CMakeFiles\Mrz-Raylib-Pid.dir\include\mrzUtils.cpp.obj -c C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\include\mrzUtils.cpp
 
-CMakeFiles/Mrz-Raylib-Pid.dir/include/gearboxs.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Mrz-Raylib-Pid.dir/include/gearboxs.cpp.i"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\include\gearboxs.cpp > CMakeFiles\Mrz-Raylib-Pid.dir\include\gearboxs.cpp.i
+CMakeFiles/Mrz-Raylib-Pid.dir/include/mrzUtils.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Mrz-Raylib-Pid.dir/include/mrzUtils.cpp.i"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\include\mrzUtils.cpp > CMakeFiles\Mrz-Raylib-Pid.dir\include\mrzUtils.cpp.i
 
-CMakeFiles/Mrz-Raylib-Pid.dir/include/gearboxs.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Mrz-Raylib-Pid.dir/include/gearboxs.cpp.s"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\include\gearboxs.cpp -o CMakeFiles\Mrz-Raylib-Pid.dir\include\gearboxs.cpp.s
+CMakeFiles/Mrz-Raylib-Pid.dir/include/mrzUtils.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Mrz-Raylib-Pid.dir/include/mrzUtils.cpp.s"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\alana\Desktop\RaylibExam\Mrz-Raylib-Pid\include\mrzUtils.cpp -o CMakeFiles\Mrz-Raylib-Pid.dir\include\mrzUtils.cpp.s
 
 # Object files for target Mrz-Raylib-Pid
 Mrz__Raylib__Pid_OBJECTS = \
 "CMakeFiles/Mrz-Raylib-Pid.dir/src/main.cpp.obj" \
 "CMakeFiles/Mrz-Raylib-Pid.dir/include/arms.cpp.obj" \
 "CMakeFiles/Mrz-Raylib-Pid.dir/include/motors.cpp.obj" \
-"CMakeFiles/Mrz-Raylib-Pid.dir/include/gearboxs.cpp.obj"
+"CMakeFiles/Mrz-Raylib-Pid.dir/include/mrzUtils.cpp.obj"
 
 # External object files for target Mrz-Raylib-Pid
 Mrz__Raylib__Pid_EXTERNAL_OBJECTS =
@@ -144,7 +144,7 @@ Mrz__Raylib__Pid_EXTERNAL_OBJECTS =
 Mrz-Raylib-Pid.exe: CMakeFiles/Mrz-Raylib-Pid.dir/src/main.cpp.obj
 Mrz-Raylib-Pid.exe: CMakeFiles/Mrz-Raylib-Pid.dir/include/arms.cpp.obj
 Mrz-Raylib-Pid.exe: CMakeFiles/Mrz-Raylib-Pid.dir/include/motors.cpp.obj
-Mrz-Raylib-Pid.exe: CMakeFiles/Mrz-Raylib-Pid.dir/include/gearboxs.cpp.obj
+Mrz-Raylib-Pid.exe: CMakeFiles/Mrz-Raylib-Pid.dir/include/mrzUtils.cpp.obj
 Mrz-Raylib-Pid.exe: CMakeFiles/Mrz-Raylib-Pid.dir/build.make
 Mrz-Raylib-Pid.exe: C:/Users/alana/Desktop/RaylibExam/Mrz-Raylib-Pid/lib/libraylib.a
 Mrz-Raylib-Pid.exe: CMakeFiles/Mrz-Raylib-Pid.dir/linkLibs.rsp

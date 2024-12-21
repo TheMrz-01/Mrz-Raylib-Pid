@@ -1,5 +1,10 @@
 #include "..\include\arms.h"
 #include "..\include\motors.h"
+#include "..\include\mrzUtils.h"
+#include "..\include\PidController.h"
+
+//[TODO]
+//Add option to change the motor that is in use
 
 //C
 #include <stdio.h>
@@ -16,8 +21,9 @@ extern MechArm mechArm;
 extern Arm startArm;
 extern Arm targetArm; 
 
-extern Motor KrakenX60;
-extern Motor Falcon500;
+extern Motor selectedMotor;
+
+PidController pidController = PidController();
 
 typedef struct Button{
     Rectangle rect;
@@ -67,29 +73,24 @@ void setTargetPoint(Button* button,ButtonText* text){
     }
 }
 
-void isArmOkey(Motor* motor,Button* stopButton,ButtonText* stopText,Button* moveButton,ButtonText* moveText){
+void isArmOkey(Button* stopButton,ButtonText* stopText,Button* moveButton,ButtonText* moveText){
     if(IsMouseButtonDown(0) && (635 > GetMousePosition().x) && (GetMousePosition().x > 580) && (370 > GetMousePosition().y) && (GetMousePosition().y > 350)){
         stopButton->color = MRZ_PRESSED_WHITE;
         stopText->color = MRZ_PRESSED_GRAY;
         mechArm.setGoForArm(0);
-        mechArm.setAcceleration(0);
-        mechArm.setVelocity(0);
-        motor->stopMotor();
+        mechArm.reset();
+        selectedMotor.breaker();
+        selectedMotor.reset();
     }
     else if(IsMouseButtonDown(0) && (515 > GetMousePosition().x) && (GetMousePosition().x > 460) && (370 > GetMousePosition().y) && (GetMousePosition().y > 350)){
         moveButton->color = MRZ_PRESSED_WHITE;
         moveText->color = MRZ_PRESSED_GRAY;
-        mechArm.setAcceleration(0);
-        mechArm.setVelocity(0);
+        mechArm.reset();
         mechArm.setRotation(startArm.getRotation());
         mechArm.setGoForArm(1);
-        mechArm.setIntegral(0);
         //previous_error = 0;
         //delete thi later
-        mechArm.setPreviousError(targetArm.getRotation() - mechArm.getRotation());
-        motor->setAppliedCurrent(30);
-        motor->setAppliedVoltage(12);
-        motor->startMotor();
+        
     }
     else{
         moveButton->color = MRZ_WHITE;
@@ -145,17 +146,22 @@ int main(void)
     stopButtonText.cords = (Vector2){stopButton.rect.x + 4,stopButton.rect.y};
     stopButtonText.color = MRZ_GRAY;
 
+    pidController.reset();
+    pidController.enableClamp();
+    pidController.setOutputClamp(0,12);
+
     while (!WindowShouldClose())
     {
         mechArm.controlArm();
-        mechArm.controlPIDValues();
+        pidController.setPidValues();
         setStartingPoint(&startButton,&startButtonText);
         setTargetPoint(&targetButton,&targetButtonText);
-        isArmOkey(&KrakenX60,&stopButton,&stopButtonText,&moveButton,&moveButtonText);
+        isArmOkey(&stopButton,&stopButtonText,&moveButton,&moveButtonText);
 
         if(mechArm.getGoForArm()){
-            mechArm.moveArm(&targetArm,&KrakenX60);
             mechArm.applyPhysics();
+            float output = pidController.calculate(mechArm.getRotation(),targetArm.getRotation());
+            selectedMotor.setVoltage(output);
         }
 
         //Drawing shit goes here
@@ -204,21 +210,21 @@ int main(void)
 
             //PID Values
             char charPValue[50];  
-            sprintf(charPValue, "%.2f",mechArm.getKp());
+            sprintf(charPValue, "%.2f",pidController.getKp());
             DrawText("P: ",400,420,20,MRZ_WHITE);
             DrawText(charPValue,400+20,420,20,MRZ_WHITE);
 
             char charIValue[50];  
-            sprintf(charIValue, "%.2f",mechArm.getKi());
+            sprintf(charIValue, "%.2f",pidController.getKi());
             DrawText("I: ",525,420,20,MRZ_WHITE);
             DrawText(charIValue,525+20,420,20,MRZ_WHITE);
 
             char charDValue[50];  
-            sprintf(charDValue, "%.2f",mechArm.getKd());
+            sprintf(charDValue, "%.2f",pidController.getKd());
             DrawText("D: ",635,420,20,MRZ_WHITE);
             DrawText(charDValue,635+20,420,20,MRZ_WHITE);
 
-            DrawText("Press T-Y for P, G-H for I, B-N for D",350,470,20,MRZ_WHITE);
+            DrawText("Press -> T-Y for P || G-H for I || B-N for D",350,470,20,MRZ_WHITE);
 
         EndDrawing();
     }
